@@ -10,13 +10,11 @@ using System.Windows.Forms;
 
 namespace CaMarcheOuPas
 {
-    public partial class MainForm : Form
+    public partial class SettingSMTP : Form
     {
-        public MainForm()
+        public SettingSMTP()
         {
             InitializeComponent();
-            Settings settings = new Settings();
-            settings.readConfig();
         }
     }
 }

@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -60,7 +61,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Settins.cs" />
+    <Compile Include="SettingSMTP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SettingSMTP.Designer.cs">
+      <DependentUpon>SettingSMTP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs" />
+    <Compile Include="Smtp.cs" />
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -75,6 +83,9 @@
     </Compile>
     <EmbeddedResource Include="SettingListForm.resx">
       <DependentUpon>SettingListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingSMTP.resx">
+      <DependentUpon>SettingSMTP.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
