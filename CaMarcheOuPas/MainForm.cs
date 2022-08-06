@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -15,8 +17,14 @@ namespace CaMarcheOuPas
         public MainForm()
         {
             InitializeComponent();
-            Settings settings = new Settings();
-            settings.readConfig();
+            Smtp test = new Smtp();
+            //test.WriteSttings("mail","pwd", true, "host", 15654);
+            //Console.WriteLine(test.Host);
+            var applicationSettings = ConfigurationManager.GetSection("appSettings") as NameValueCollection;
+            foreach (var key in applicationSettings.AllKeys)
+            {
+                Console.WriteLine(key + " = " + applicationSettings[key]);
+            }
         }
     }
 }

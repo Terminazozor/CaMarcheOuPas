@@ -16,9 +16,7 @@ namespace CaMarcheOuPas
         }
         public void readConfig()
         {
-            string test;
-            test = ConfigurationManager.AppSettings.Get("test");
-            Console.WriteLine("The value of test is " + test);
+
         }
     }
 }
