@@ -60,7 +60,8 @@
             // 
             this.parametreToolStripMenuItem.Name = "parametreToolStripMenuItem";
             this.parametreToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.parametreToolStripMenuItem.Text = "Parametre";
+            this.parametreToolStripMenuItem.Text = "Machine";
+            this.parametreToolStripMenuItem.Click += new System.EventHandler(this.parametreToolStripMenuItem_Click);
             // 
             // serveurSMTPToolStripMenuItem
             // 

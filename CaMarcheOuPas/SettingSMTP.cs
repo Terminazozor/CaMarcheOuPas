@@ -34,7 +34,7 @@ namespace CaMarcheOuPas
             Smtp smtp = new Smtp();
             if(textMail.Text=="" || textPwd.Text=="" || textHost.Text=="" || textPort.Text == "")
             {
-                MessageBox.Show("Un où plusieur champ ne son pas remplis", "Erreur", MessageBoxButtons.OK);
+                MessageBox.Show("Un ou plusieur champ ne son pas remplis", "Erreur", MessageBoxButtons.OK);
             }
             else
             {

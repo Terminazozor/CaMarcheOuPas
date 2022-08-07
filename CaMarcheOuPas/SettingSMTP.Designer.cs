@@ -163,7 +163,7 @@
             this.Controls.Add(this.textMail);
             this.Controls.Add(this.labelSMTP);
             this.Name = "SettingSMTP";
-            this.Text = "SettingSMTP";
+            this.Text = "Configuration SMTP";
             this.ResumeLayout(false);
             this.PerformLayout();
 

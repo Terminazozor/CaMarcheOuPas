@@ -33,24 +33,35 @@ namespace CaMarcheOuPas
             this.port = port;
             parameters[4,0] = "port";
             parameters[4,1] = port.ToString();
-            ReadConfig readConfig = new ReadConfig();
-            readConfig.SaveSettings(parameters);
+            Settings settings = new Settings();
+            settings.SaveSettings(parameters);
         }
         public void ReadSettings()
         {
-            ReadConfig readConfig = new ReadConfig();
-            this.mail = readConfig.ReadOneSettings("mail");
-            this.pwd = readConfig.ReadOneSettings("pwd");
-            if (readConfig.ReadOneSettings("SSL") == "True")
+            Settings settings = new Settings();
+            if (settings.ReadOneSettings("mail") == null)
             {
-                this.SSL = true;
+                this.mail = "";
+                this.pwd = "";
+                this.SSL = false;
+                this.host = "";
+                this.port = 0;
             }
             else
             {
-                this.SSL = false;
+                this.mail = settings.ReadOneSettings("mail");
+                this.pwd = settings.ReadOneSettings("pwd");
+                if (settings.ReadOneSettings("SSL") == "True")
+                {
+                    this.SSL = true;
+                }
+                else
+                {
+                    this.SSL = false;
+                }
+                this.host = settings.ReadOneSettings("host");
+                this.port = int.Parse(settings.ReadOneSettings("port"));
             }
-            this.host = readConfig.ReadOneSettings("host");
-            this.port = int.Parse(readConfig.ReadOneSettings("port"));
         }
         public void NewMail(string Message, string Destinataire)
         {
