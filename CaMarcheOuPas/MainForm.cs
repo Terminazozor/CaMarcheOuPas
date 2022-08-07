@@ -18,13 +18,20 @@ namespace CaMarcheOuPas
         {
             InitializeComponent();
             Smtp test = new Smtp();
-            //test.WriteSttings("mail","pwd", true, "host", 15654);
-            //Console.WriteLine(test.Host);
+            test.WriteSttings("mail","pwd", true, "host", 254);
             var applicationSettings = ConfigurationManager.GetSection("appSettings") as NameValueCollection;
             foreach (var key in applicationSettings.AllKeys)
             {
                 Console.WriteLine(key + " = " + applicationSettings[key]);
             }
+            test.ReadSettings();
+            Console.WriteLine(test.port);
+        }
+
+        private void serveurSMTPToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SettingSMTP settingSMTP = new SettingSMTP();
+            settingSMTP.Show();
         }
     }
 }

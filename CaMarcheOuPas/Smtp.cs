@@ -10,15 +10,13 @@ namespace CaMarcheOuPas
 {
     internal class Smtp : SmtpClient
     {
-        public string mail;
-        public string pwd;
-        public Boolean SSL;
-        public string host;
-        public int port;
+        public string mail { get; private set; }
+        public string pwd { get; private set; }
+        public Boolean SSL { get; private set; }
+        public string host { get; private set; }
+        public int port { get; private set; }
         public void WriteSttings(string mail,string pwd,Boolean SSL,string host,int port)
         {
-            Console.WriteLine("ca rentre");
-            Console.WriteLine(mail);
             string[,] parameters = new string[5,2];
             this.mail = mail;
             parameters[0,0] = "mail";
@@ -35,60 +33,24 @@ namespace CaMarcheOuPas
             this.port = port;
             parameters[4,0] = "port";
             parameters[4,1] = port.ToString();
-            SaveSettings(parameters);
-            Console.WriteLine("je sors");
+            ReadConfig readConfig = new ReadConfig();
+            readConfig.SaveSettings(parameters);
         }
         public void ReadSettings()
         {
-
-        }
-        public string ReadOneSettings(string key)
-        {
-            try
+            ReadConfig readConfig = new ReadConfig();
+            this.mail = readConfig.ReadOneSettings("mail");
+            this.pwd = readConfig.ReadOneSettings("pwd");
+            if (readConfig.ReadOneSettings("SSL") == "True")
             {
-                var appSettings = ConfigurationManager.AppSettings;
-                string result = appSettings[key] ?? null;
-                return result;
+                this.SSL = true;
             }
-            catch (ConfigurationErrorsException)
+            else
             {
-                Console.WriteLine("Error reading app settings");
-                return null;
+                this.SSL = false;
             }
-        }
-        public void SaveSettings(string[,] parameters)
-        {
-            Console.WriteLine("ca rentre saveSet");
-            for(int i = 0; i < parameters.GetLength(0); i++)
-            {
-                Console.WriteLine(i.ToString());
-                SaveKeySettings(parameters[i, 0], parameters[i,1]);
-            }
-        }
-        public void SaveKeySettings(string key, string value)
-        {
-            Console.WriteLine("Ca rentre saveKey");
-            try
-            {
-                var configFile = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-                var settings = configFile.AppSettings.Settings;
-                if (settings[key] == null)
-                {
-                    settings.Add(key, value);
-                    Console.WriteLine(key);
-                }
-                else
-                {
-                    settings[key].Value = value;
-                    Console.WriteLine(key);
-                }
-                configFile.Save(ConfigurationSaveMode.Modified);
-                ConfigurationManager.RefreshSection(configFile.AppSettings.SectionInformation.Name);
-            }
-            catch (ConfigurationErrorsException)
-            {
-                Console.WriteLine("Error writing app settings");
-            }
+            this.host = readConfig.ReadOneSettings("host");
+            this.port = int.Parse(readConfig.ReadOneSettings("port"));
         }
         public void NewMail(string Message, string Destinataire)
         {

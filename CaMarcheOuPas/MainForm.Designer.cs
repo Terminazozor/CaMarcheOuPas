@@ -32,8 +32,8 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.optionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.parametreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.serveurSMTPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,16 +62,17 @@
             this.parametreToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.parametreToolStripMenuItem.Text = "Parametre";
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
             // serveurSMTPToolStripMenuItem
             // 
             this.serveurSMTPToolStripMenuItem.Name = "serveurSMTPToolStripMenuItem";
             this.serveurSMTPToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.serveurSMTPToolStripMenuItem.Text = "SMTP";
+            this.serveurSMTPToolStripMenuItem.Click += new System.EventHandler(this.serveurSMTPToolStripMenuItem_Click);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // MainForm
             // 
