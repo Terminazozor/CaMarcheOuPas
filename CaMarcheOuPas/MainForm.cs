@@ -17,6 +17,16 @@ namespace CaMarcheOuPas
         public MainForm()
         {
             InitializeComponent();
+            PingClass test = new PingClass("192.168.1.27");
+            if (test.doPing())
+            {
+                Console.WriteLine("ca marche");
+            }
+            else
+            {
+                Console.WriteLine("ca ne marche pas ");
+            }
+            ShowMachine();
         }
 
         private void serveurSMTPToolStripMenuItem_Click(object sender, EventArgs e)
@@ -29,6 +39,25 @@ namespace CaMarcheOuPas
         {
             SettingListForm settingListForm = new SettingListForm();
             settingListForm.Show();
+        }
+        private void ShowMachine()
+        {
+            int x = 35;
+            int y = 35;
+            var applicationSettings = ConfigurationManager.GetSection("appSettings") as NameValueCollection;
+            foreach (var key in applicationSettings.AllKeys)
+            {
+                string machineVerif = key.Split('/')[0];
+                if (machineVerif == "Machine")
+                {
+                    Label label = new Label();
+                    label.Text=key.Split('/')[1];
+                    label.Location = new Point(x, y);
+                    label.Size = new Size(label.PreferredWidth, label.PreferredHeight);
+                    label.Show();
+
+                }
+            }
         }
     }
 }

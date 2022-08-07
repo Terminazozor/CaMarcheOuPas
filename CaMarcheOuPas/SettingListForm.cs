@@ -45,7 +45,6 @@ namespace CaMarcheOuPas
                 string toDelete = listMachine.SelectedItems[0].ToString();
                 Settings settings = new Settings();
                 settings.DeleteSettingsKey("Machine/" + toDelete.Split('-')[0]);
-                Console.WriteLine("Machine/" + toDelete.Split('-')[0]);
                 listMachine.Items.Clear();
                 ShowMachine();
             }
