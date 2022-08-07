@@ -18,7 +18,6 @@ namespace CaMarcheOuPas
         {
             InitializeComponent();
             Smtp test = new Smtp();
-            test.WriteSttings("mail","pwd", true, "host", 254);
             var applicationSettings = ConfigurationManager.GetSection("appSettings") as NameValueCollection;
             foreach (var key in applicationSettings.AllKeys)
             {

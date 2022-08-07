@@ -15,7 +15,37 @@ namespace CaMarcheOuPas
         public SettingSMTP()
         {
             InitializeComponent();
+            Smtp smtp = new Smtp();
+            smtp.ReadSettings();
+            textMail.Text = smtp.mail;
+            textPwd.Text = smtp.pwd;
+            checkSSL.Checked = smtp.SSL;
+            textHost.Text = smtp.host;
+            textPort.Text = smtp.port.ToString();
         }
 
+        private void buttonLeave_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            Smtp smtp = new Smtp();
+            if(textMail.Text=="" || textPwd.Text=="" || textHost.Text=="" || textPort.Text == "")
+            {
+                MessageBox.Show("Un où plusieur champ ne son pas remplis", "Erreur", MessageBoxButtons.OK);
+            }
+            else
+            {
+                smtp.WriteSttings(textMail.Text, textPwd.Text, checkSSL.Checked, textHost.Text, int.Parse(textPort.Text));
+                smtp.ReadSettings();
+                textMail.Text = smtp.mail;
+                textPwd.Text = smtp.pwd;
+                checkSSL.Checked = smtp.SSL;
+                textHost.Text = smtp.host;
+                textPort.Text = smtp.port.ToString();
+            }
+        }
     }
 }

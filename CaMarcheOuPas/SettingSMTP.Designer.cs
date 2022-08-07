@@ -133,6 +133,7 @@
             this.buttonSave.TabIndex = 12;
             this.buttonSave.Text = "Enregistrer";
             this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // buttonLeave
             // 
@@ -142,6 +143,7 @@
             this.buttonLeave.TabIndex = 13;
             this.buttonLeave.Text = "Annuler";
             this.buttonLeave.UseVisualStyleBackColor = true;
+            this.buttonLeave.Click += new System.EventHandler(this.buttonLeave_Click);
             // 
             // SettingSMTP
             // 

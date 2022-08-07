@@ -54,12 +54,19 @@ namespace CaMarcheOuPas
         }
         public void NewMail(string Message, string Destinataire)
         {
-            MailMessage mail = new MailMessage();
-            mail.From = new MailAddress("csharpvalentintest@hotmail.com");
-            mail.To.Add(new MailAddress(Destinataire));
-            mail.Body = Message;
-            mail.Subject = "test";
-            Send(mail);
+            if (this.mail == null)
+            {
+
+            }
+            else
+            {
+                MailMessage mailM = new MailMessage();
+                mailM.From = new MailAddress(this.mail);
+                mailM.To.Add(new MailAddress(Destinataire));
+                mailM.Body = Message;
+                mailM.Subject = "test";
+                Send(mailM);
+            }
         }
     }
 }
